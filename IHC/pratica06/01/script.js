@@ -11,11 +11,8 @@ form.addEventListener('submit', function(e) {
     e.preventDefault();
     showResult.innerHTML = '';
     keyword = inputKeyword.value;
-    
-    if (keyword % 2 == 0)
-        htmlContent = `${showText} Even`;
-    else 
-        htmlContent = `${showText} Odd`;
+
+    htmlContent = keyword % 2 == 0 ? `${showText} Even` : `${showText} Odd`;
 
     showResult.insertAdjacentHTML('afterbegin', htmlContent);
 });
