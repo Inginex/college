@@ -13,13 +13,13 @@ form.addEventListener('submit', function(e) {
     showResult.innerHTML = '';
     keyword = inputKeyword.value;
     
-    count = keyword.split(/(?:,| )+/);  
+    count = keyword.split(/(?:,| )+/).map(Number);  
     makeCalc();
 });
 
 function makeCalc() {
-    var calc = 0;
-    var min = Math.min(count[0], count[1]), max = Math.max(count[0], count[1]);
+    let calc = 0;
+    let min = Math.min(count[0], count[1]), max = Math.max(count[0], count[1]);
     
     while(max >= min) {
         calc = calc + min;

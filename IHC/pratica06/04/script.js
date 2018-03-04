@@ -23,13 +23,13 @@ form.addEventListener('submit', function(e) {
     showResult.innerHTML = '';
     keyword = inputKeyword.value;
     
-    count = keyword.split(/(?:,| )+/);  
+    count = keyword.split(/(?:,| )+/).map(Number);  
     makeCalc();
 });
 
 function makeCalc() {
     if (operation) {
-        var math = 0;
+        let math = 0;
         switch (operation) {
             case '1':
                 math = count[0] * count[1];
@@ -44,7 +44,7 @@ function makeCalc() {
                 result = `Area do circulo: ${math}`;
                 break;
             case '4':
-                math = [(parseInt(count[0]) + parseInt(count[1])) * count[2]] / 2;
+                math = [(count[0] + count[1]) * count[2]] / 2;
                 result = `Area do trapezio: ${math}`;
                 break;
             default:
