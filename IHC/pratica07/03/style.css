@@ -1,0 +1,7 @@
+.warning-message {
+    display: block;
+    padding: 5px;
+    background-color: rgb(206, 206, 12);
+    text-align: center;
+    width: 250px;
+}
