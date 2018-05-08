@@ -1,46 +1,92 @@
+const fcurso = document.getElementById("form-curso");
+const faluno = document.getElementById("form-aluno");
+const data = document.getElementById("aluno-info");
+
 let aluno = new Object();
 aluno.curso = {};
 
-const body = document.querySelector("#aluno-info");
-const app = document.createElement("div");
-const form = document.querySelector("form");
-const inputs = document.querySelectorAll("input");
+const forms = document.querySelectorAll("form")
 
-inputs.forEach((input) => { 
-    input.addEventListener("blur", () => {
-        if (input.value === "") { 
-            input.insertAdjacentHTML("beforebegin", `<p class="warning-message"> Field is required. </p>`);
-            const messages = document.querySelectorAll(".warning-message");
-            setTimeout(()=>{
-                
-                messages.forEach((message) => { 
-                    message.style.display = "hidden";
-                })
-            }, 200)
-            console.log("blur on");
-        }
-    })
-})
+function checkFields(field, value) {
+    return (
+        (value === "") ? `${field} is empty.` :
+        (value < 5) ? `${field} is too short` : null
+    )
+}
 
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
+function showMessage(field, message) {
+    console.log(message)
+}
 
-    aluno.nome = form["aluno-nome"].value;
-    aluno.telefone = form["aluno-telefone"].value
-    aluno.matricula = form["aluno-matricula"].value
-    aluno.curso.nome = form["curso-nome"].value;
-    aluno.curso.campus = form["curso-campus"].value
-    aluno.curso.turno = form["curso-turno"].value
+function callOtherForm(caller) {
+    if (caller === "form-curso") {
+        faluno.style.display = "block";
+        fcurso.style.display = "none";
+    } else if (caller === "form-aluno") {
+        fcurso.style.display = "block";
+        faluno.style.display = "none";
+    } else {
+        return;
+    }
+}
 
-    let content = `
-    <h1>${aluno.nome}</h1>
-    <p>Telefone: ${aluno.telefone}<br> Matricula: ${aluno.matricula}</p>
-    <h2>${aluno.curso.nome}</h2>
-    <ul>
-        <li>Campus: ${aluno.curso.campus}</li>
-        <li>Turno: ${aluno.curso.turno}</li>
-    </ul>
+function showObj() {
+    const dataText = `
+        <h2>${aluno.nome}</h2>
+        <p>Telefone: ${aluno.telefone}<p>
+        <p>Matricula: ${aluno.matricula}<p>
+        <br>
+        <h2>${aluno.curso.nome}</h2>
+        <p>Campus: ${aluno.curso.campus}</p>
+        <p>Turno: ${aluno.curso.turno}</p>
     `;
 
-    body.insertAdjacentHTML('beforebegin',content);
+    data.insertAdjacentHTML("afterbegin", dataText);
+}
+
+forms.forEach((form) => {
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if(form.id === "form-aluno") {
+            nome = form["nome"].value;
+            telefone = form["telefone"].value;
+            matricula = form["matricula"].value;
+            
+            // Validate form
+            if (checkFields("Nome", nome) !== null) { showMessage(form, checkFields("Nome", nome)); return}
+            if (checkFields("Telefone", telefone) !== null) {showMessage(form, checkFields("Telefone", telefone)); return}
+            else if (/^(?:\+)[0-9]{2}\s?(?:\()[0-9]{2}(?:\))\s?[0-9]{4,5}(?:-)[0-9]{4}$/.test("+55"+telefone) === false) { showMessage(form, "Telefone is invalid."); return}
+            if (checkFields("Matricula", matricula) !== null) { showMessage(form, checkFields("Matricula", matricula)); return}
+            else if (/^[0-9]$/.test(matricula) !== false) { showMessage(form, "Matricula is invalid."); return}
+
+            // Set data
+            aluno.nome = nome;
+            aluno.telefone = telefone; 
+            aluno.matricula = matricula;
+
+            // Call form-curso
+            callOtherForm("form-aluno");
+
+        } else if(form.id === "form-curso"){
+            nome = form["nome"].value;
+            campus = form["campus"].value;
+            turno = form["turno"].value;
+
+            // Validate form
+            if (checkFields("Nome", nome) !== null) { showMessage(form, checkFields("Nome", nome)); return}
+            if (checkFields("Campus", campus) !== null) {showMessage(form, checkFields("Campus", campus)); return}
+            if (checkFields("Turno", turno) !== null) { showMessage(form, checkFields("Turno", turno)); return}
+
+            // Set data
+            aluno.curso.nome = nome;
+            aluno.curso.campus = campus;
+            aluno.curso.matricula = matricula;
+            console.log(aluno.curso);
+
+            // Show data
+            showObj()
+        } else {
+            return;
+        }
+    })
 })
