@@ -5,10 +5,9 @@ const showResult = document.querySelector('#result');
 let htmlContent;
 let keyword;
 let count = [];
-let calc;
+let calc = 0;
 
-form.addEventListener('submit', function(e) {
-    
+form.addEventListener('submit', function(e) {  
     e.preventDefault();
     count = [];
     showResult.innerHTML = '';
@@ -19,14 +18,16 @@ form.addEventListener('submit', function(e) {
 });
 
 function makeCalc() {
-    calc = parseInt(count[0]);
-    count.forEach(function(n){ if(n <= 0){ calc = "Invalid number";} });
+    count.map(Number);
+    count.forEach(function(n){ if(n <= 0){ 
+        calc = "Invalido";
+        return;
+    }});
 
-    while (count[1] > 1 && typeof(calc) != "string") {
-        calc = calc * count[0];
-        count[1]--;
+    if(calc != 0) {
+        showResult.insertAdjacentHTML('afterbegin', "Número Inválido.");
+        return;
     }
-
-    htmlContent = calc;
-    showResult.insertAdjacentHTML('afterbegin', htmlContent);
+    calc = Math.round( Math.log(count[0])/Math.log(count[1]));
+    showResult.insertAdjacentHTML('afterbegin', calc);
 }
