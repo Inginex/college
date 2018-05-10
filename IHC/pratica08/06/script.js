@@ -6,6 +6,7 @@ const btn = document.getElementById("start");
 const rst = document.getElementById("reset")
 const res = document.getElementById("result");
 const options = 100;
+let needToReset = false;
 let selected = new Array();
 
 // Initialize game
@@ -21,8 +22,8 @@ let selected = new Array();
     const lis = document.querySelectorAll("li");
     lis.forEach((li) => {
         li.addEventListener("click", function (e) {
-            if (selected.length >= 5){return;}
-            if (selected.length == 4) {
+            if (selected.length > 5){return;}
+            if (selected.length == 5) {
                 callRaffle();
                 return;
             }
@@ -40,6 +41,7 @@ function callRaffle() {
     })
 }
 function shuffle() {
+    if(needToReset){return;}
     const pick = new Array();
     selected.forEach(function (value, n) {
         pick[n] = pickNumber(pick);
@@ -78,12 +80,14 @@ function checkWinner(pick) {
     showResult(matchs, pick);
 }
 function showResult(matchs, pick) {
+    res.style.display = "flex";
     res.insertAdjacentHTML("afterbegin", `<h1>Você ganhou ${matchs} da premiação.</h1><h3>Resultado:</h3><p>Seus numeros: ${selected}</p><p>Numeros Sorteados: ${pick}</p>`);
     // Show reset option
     rst.style.display = "block";
     rst.addEventListener("click", ()=>{
         resetGame();
     })
+    needToReset = true;
 }
 
 function resetGame(){
@@ -93,7 +97,9 @@ function resetGame(){
         li.className = "";
     });
     res.innerHTML = "";
+    res.style.display = "none";
     rst.style.display = "none";
     btn.disabled = false;
     call.style.display = "none";
+    needToReset = false;
 }
