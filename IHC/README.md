@@ -133,7 +133,7 @@ adição inicie desabilitado. O botão de adição só deve ser habilitado após
 preenchimento de todos os campos do formulário. Se em algum momento um dos
 campos se tornar vazio, o botão de adição deve retornar para o estado de desabilitado.
 
-##### Pratica 05
+##### Pratica 06
 Usando HTML, CSS e JS, crie o formulário abaixo e a validação dos campos apresentados.
 
 ### Exercícios 13
@@ -170,3 +170,63 @@ OBS: o rodapé é fixo, não rola com a página.
 Crie a página de contatos conforme apresentado abaixo. Os campos “Nome”, “E-mail” e
 “Mensagem” são obrigatórios. A descrição dos campos deve ser feita com o elemento
 “Label”.
+
+### Exercícios 14
+##### Pratica 02
+- Criar o arquivo chamado pratica14exercicio02.css, para deixar a página o mais próximo possível do
+exibido abaixo. OBS: não modifique o arquivo pratica14exercicio02.html.
+
+### Exercícios 15
+##### Pratica 02
+Usando HTML, CSS e JavaScript, escreva o algoritmo para uma empresa que deseja realizar o
+cadastro das pessoas que compram seus produtos. A empresa realiza vendas para pessoas
+físicas, jurídicas e estrangeiras. O algoritmo deve:
+- Possuir a classe Pessoa com:
+    * Nome.
+    * Telefone.
+    * Valor da compra.
+    * Métodos devidos.
+- Possuir a classe PessoaFisica, que estende de Pessoa, com:
+    * CPF.
+    * Métodos devidos.
+- Possuir a classe PessoaJuridica, que estende de Pessoa, com:
+    * CNPJ.
+    * Métodos devidos.
+- Possuir a classe PessoaEstrangeira, que estende de Pessoa, com:
+    * Passaporte.
+    * Métodos devidos.
+- Realizar o cadastro das pessoas.
+- Permitir a apresentação das pessoas cadastradas.
+- Permitir pesquisar uma pessoa no cadastro, usando o nome como chave de
+pesquisa.
+- Permitir pesquisar uma pessoa no cadastro, usando o CPF, CNPJ ou
+passaporte como chave de pesquisa.
+- Permitir excluir uma pessoa do cadastro.
+- Permitir calcular e apresentar o total das vendas da empresa.
+
+### Exercícios 17
+##### Pratica 03
+- O trecho de código abaixo, permite exibir fotos públicas do “site” Flickr,
+https://www.flickr.com/. Usando HTML e CSS, crie uma página que incorpore o código apresentado para exibição das
+fotos. Os arquivos devem ser salvos com os nomes pratica17exercicio03.html,
+pratica17exercicio03.css e pratica17exercicio03.js. O usuário deve informar o assunto
+relacionado às fotos que deseja listar e também a quantidade de fotos que devem ser
+apresentadas na tela.
+
+### Exercícios 18 
+##### Pratica 01
+- Usando uma das ferramentas de prototipagem citadas acima, ou outra de sua preferência, construa
+o protótipo da interface do sistema para um cinema. O sistema deve:
+1. Apresentar os filmes em exibição.
+2. Apresentar o dia, horário e salas de exibição de cada filme.
+3. Apresentar os lugares livres e ocupados de cada sessão.
+4. Apresentar os preços de cada sessão.
+5. Permitir buscas por:
+    * Nome do filme.
+    * Dia de exibição.
+    * Horário de exibição.
+6. Permitir a venda de ingressos. Para a realização das vendas de ingressos, os usuários devem
+informar:
+    * Nome do filme.
+    * Dia e horário da sessão.
+    * Lugar, poltrona, na sala em que deseja assistir ao filme.
