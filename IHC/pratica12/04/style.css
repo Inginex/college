@@ -1,0 +1,95 @@
+html {
+    font-family: "Segoe UI", "Helvetica Neue", Verdana, Arial, sans-serif;
+    font-size: 16px;
+    height: 95%;
+}
+main {
+    max-width: 19rem;
+    margin: 5rem auto;
+}
+h1 {
+    text-align: center;
+}
+    fieldset, .quadro {
+box-shadow: 0 6px 10px 0 #666;
+}
+/*
+---------------------------------------------------------
+box-shadow: horizontal vertical borrão dispersão cor;
+---------------------------------------------------------
+Parâmetros do box-shadow:
+* Primeiro valor: sombra horizontal;
+* Segundo valor: sombra vertical;
+* Terceiro valor: borrão da sombra;
+* Quarto valor: dispersão da sombra;
+* Quinto valor: cor da sombra.
+---------------------------------------------------------
+*/
+.quadro {
+height: 15rem;
+}
+footer {
+padding: 1rem;
+}
+.erro, .ok {
+font-weight: bold;
+text-align: center;
+}
+.erro {
+color: red;
+}
+.ok {
+color: blue;
+}
+.botao {
+width: 3rem;
+height: 3rem;
+background-color: red;
+border-radius: 50%;
+box-shadow: 0 6px 10px 0 #666;
+border: 0;
+font-size: 1.5rem;
+color: white;
+text-align: center;
+line-height: 1rem;
+margin: .5rem auto;
+}
+.botao:hover {
+    font-size: 2rem;
+    font-weight: bold;
+    box-shadow: 0 6px 14px 0 #333333;
+    transform: scale(1.05);
+}
+.quadro .botao {
+    width: 4rem;
+    height: 4rem;
+    margin-top: 3rem;
+    line-height: 3.7rem;
+    text-align: center;
+    font-size: 1rem;
+    background-color: #11CE11;
+}
+.btn_reset {
+    float: left;
+}
+.btn_submit {
+    float: right;
+    background-color: #11CE11;
+}
+.resp {
+    color: #11CE11;
+    text-align: center;
+}
+a {
+    text-decoration: none;
+}
+input:disabled {
+    background-color: #4E4E4E;
+    color:#A1A1A1;
+}
+input:disabled:hover {
+    font-size: 1.5rem;
+    font-weight: normal;
+    box-shadow: 0 6px 10px 0 #666;
+    transform: scale(1);
+}
