@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS - Validação de Formulário</title>
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <script src="script.js" type="text/javascript"></script>
+</head>
+
+<body onload="boasVindas();">
+    <main>
+        <h1>Cadastro</h1>
+        <form action="validacao.html" method="get" onsubmit="return verificarFormulario();">
+            <table>
+                <tr>
+                    <td>
+                        <label for="login">Login:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="login" name="campoLogin" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="email">E-mail:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="email" name="campoEmail" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="datanasc">Data de nascimento:</label>
+                    </td>
+                    <td>
+                        <input type="text" onkeypress="return mascaraData(this, event);" id="datanasc" name="campoDataNascimento" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="cpf">CPF:</label>
+                    </td>
+                    <td>
+                        <input type="text" onkeypress="return mascaraCPF(this);" id="cpf" name="campoCPF" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="escolaridade">Escolaridade:</label>
+                    </td>
+                    <td>
+                        <select id="escolaridade" name="campoEscolaridade">
+                            <option value=""></option>
+                            <option value="1">Ensino Fundamental</option>
+                            <option value="2">Ensino Médio</option>
+                            <option value="3">Graduação</option>
+                            <option value="4">Pós-graduação</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="sexoFeminino">Sexo:</label>
+                    </td>
+                    <td>
+                        <label>
+                            <input name="campoSexo" id="sexoFeminino" type="radio" value="f" /> Feminino</label>
+                        <label>
+                            <input name="campoSexo" id="sexoMasculino" type="radio" value="m" /> Masculino</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="reset" value="Limpar" name="botaoLimpar" />
+                    </td>
+                    <td>
+                        <input type="submit" value="Cadastrar" name="botaoCadastrar"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </main>
+</body>
+
+</html>
