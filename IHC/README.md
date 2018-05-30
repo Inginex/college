@@ -121,24 +121,30 @@ pelo usuário.
 Resultado do código: [aqui](https://github.com/sampalm/college/tree/master/IHC/pratica08).
 
 ### Exercícios 12
+##### Pratica 02
+- Usando HTML, CSS e JS, altere o exemplo do exercício anterior incluindo o campo CPF no
+formulário. Crie a função JavaScript para gerar a máscara do CPF. Acrescente a
+verificação de inserção do CPF na função “function verificarFormulario()”. Retire a
+chamada da função “function verificarFormulario()” do evento “onclick” do botão e a
+coloque no evento onsubmit da “tag” form.
 ##### Pratica 04
-Usando HTML, CSS e JS, altere o exemplo do exercício anterior incluindo a validação do
+- Usando HTML, CSS e JS, altere o exemplo do exercício anterior incluindo a validação do
 campo mensagem do formulário. Caso uma mensagem não seja informada, o botão de
 adição deve ser desabilitado. Informando uma mensagem, o botão de adição deve ser
 habilitado novamente.
 
 ##### Pratica 05
-Usando HTML, CSS e JS, altere o exemplo do exercício anterior, para que o botão de
+- Usando HTML, CSS e JS, altere o exemplo do exercício anterior, para que o botão de
 adição inicie desabilitado. O botão de adição só deve ser habilitado após o
 preenchimento de todos os campos do formulário. Se em algum momento um dos
 campos se tornar vazio, o botão de adição deve retornar para o estado de desabilitado.
 
 ##### Pratica 06
-Usando HTML, CSS e JS, crie o formulário abaixo e a validação dos campos apresentados.
+- Usando HTML, CSS e JS, crie o formulário abaixo e a validação dos campos apresentados.
 
 ### Exercícios 13
 ##### Pratica 01
-Você está recebendo juntamente com esta prática o arquivo pratica13exercicio01.rar.
+- Você está recebendo juntamente com esta prática o arquivo pratica13exercicio01.rar.
 Descompacte esse arquivo. Carregue o arquivo index.html no navegador. Esse é o
 projeto de uma confeitaria em que você irá encontrar os arquivos:
 - index.html.
@@ -152,22 +158,21 @@ projeto de uma confeitaria em que você irá encontrar os arquivos:
     - imagem6.png.
     - imagem7.png.
 
-Utilizando os arquivos citados acima, crie um arquivo chamado pratica13exercicio01.css,
+- Utilizando os arquivos citados acima, crie um arquivo chamado pratica13exercicio01.css,
 para formatar a página index.html e deixá-la o mais próximo possível do exibido abaixo.
 OBS: não modifique o arquivo index.html.
-As cores utilizadas no projeto são:
-- Cor do fundo do banner: #ffbbdd.
-
-- Cor da barra de menus: #f0b0d0.
-- Borda dos produtos: #e5e5e5.
-- Fundo cinza das informações dos produtos: #f0f0f0.
-- Cor do fundo do rodapé: #ffbbdd.
-As fontes utilizadas no projeto são:
-- HTML e body: Verdana.
-- Banner: Times New Roman, itálico.
-- Barra de menu: Tahoma, negrito.
-OBS: o rodapé é fixo, não rola com a página.
-Crie a página de contatos conforme apresentado abaixo. Os campos “Nome”, “E-mail” e
+- As cores utilizadas no projeto são:
+    - Cor do fundo do banner: #ffbbdd.
+    - Cor da barra de menus: #f0b0d0.
+    - Borda dos produtos: #e5e5e5.
+    - Fundo cinza das informações dos produtos: #f0f0f0.
+    - Cor do fundo do rodapé: #ffbbdd.
+- As fontes utilizadas no projeto são:
+    - HTML e body: Verdana.
+    - Banner: Times New Roman, itálico.
+    - Barra de menu: Tahoma, negrito.
+    - OBS: o rodapé é fixo, não rola com a página.
++ Crie a página de contatos conforme apresentado abaixo. Os campos “Nome”, “E-mail” e
 “Mensagem” são obrigatórios. A descrição dos campos deve ser feita com o elemento
 “Label”.
 
@@ -178,7 +183,7 @@ exibido abaixo. OBS: não modifique o arquivo pratica14exercicio02.html.
 
 ### Exercícios 15
 ##### Pratica 02
-Usando HTML, CSS e JavaScript, escreva o algoritmo para uma empresa que deseja realizar o
+- Usando HTML, CSS e JavaScript, escreva o algoritmo para uma empresa que deseja realizar o
 cadastro das pessoas que compram seus produtos. A empresa realiza vendas para pessoas
 físicas, jurídicas e estrangeiras. O algoritmo deve:
 - Possuir a classe Pessoa com:
