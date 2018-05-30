@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Meu Formulário</title>
+    <link href="style.css" type="text/css" rel="stylesheet" />
+    <script src="script.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <main>
+        <form action="validacao.html" id="formulario" autocomplete="off" method="POST">
+            <fieldset>
+                <legend>Formulário</legend>
+                <label>Nome:
+                    <input id="nome" class="campo_nome" type="text" onblur="validarNome();" />
+                </label>
+                <br>
+                <label>Email:
+                    <input id="email" class="campo_email" onblur="validarEmail();" />
+                </label>
+                <br>
+                <label>Mensagem:
+                    <br>
+                    <textarea id="mensagem" class="msg" cols="35" rows="8" onblur="validarMensagem();"></textarea>
+                </label>
+                <br>
+                <input id="res" class="btn_reset botao" type="reset" value="-
+" onclick="limpar();" />
+                <input id="btn" class="btn_submit botao" type="submit" value="+" onclick="validar();" />
+            </fieldset>
+        </form>
+        <footer>
+            <div id="msg_nome"></div>
+            <div id="msg_email"></div>
+            <div id="msg_mensagem"></div>
+        </footer>
+    </main>
+</body>
+
+</html>
