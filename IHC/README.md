@@ -120,6 +120,18 @@ pelo usuário.
 
 Resultado do código: [aqui](https://github.com/sampalm/college/tree/master/IHC/pratica08).
 
+### Exercícios 09
+##### Pratica 02
+- Com base nos exemplos anteriores e usando HTML, CSS e JS, escreva um algoritmo para
+conversão de números entre as bases numéricas: binária, octal, decimal e hexadecimal.
+O número a ser convertido deve ser informado pelo usuário a partir do navegador Web..
+
+##### Pratica 04
+- Altere o projeto para que ele apresente 3 imagens por linha. Substitua a utilização da
+propriedade CSS “float” pela propriedade CSS “display”. Ao clicar em um dos botões de
+orçamento, o usuário deverá visualizar 4 opções de orçamento e informação adicional de
+viagem para o respectivo destino.
+
 ### Exercícios 12
 ##### Pratica 02
 - Usando HTML, CSS e JS, altere o exemplo do exercício anterior incluindo o campo CPF no
