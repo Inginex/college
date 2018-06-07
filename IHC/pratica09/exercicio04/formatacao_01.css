@@ -1,0 +1,17 @@
+html, body {
+  margin: 0;
+  font-size: 14px;
+  height: 100%;
+  font-family: "Segoe UI", "sans-serif";  
+  color: #808080;
+}
+
+header {
+  padding: 0 0;
+  text-align: center;
+}
+
+header img {
+  width: 25vw;
+  height: 25vh;    
+}
