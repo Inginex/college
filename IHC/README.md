@@ -132,6 +132,8 @@ propriedade CSS “float” pela propriedade CSS “display”. Ao clicar em um 
 orçamento, o usuário deverá visualizar 4 opções de orçamento e informação adicional de
 viagem para o respectivo destino.
 
+Resultado do código: [aqui](https://github.com/sampalm/college/tree/master/IHC/pratica09).
+
 ### Exercícios 12
 ##### Pratica 02
 - Usando HTML, CSS e JS, altere o exemplo do exercício anterior incluindo o campo CPF no

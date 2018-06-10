@@ -1,0 +1,110 @@
+@import url("formatacao_01.css");
+
+.slogan, .login, .rodape {
+  max-width: 634px;
+  margin-left: 25.05vw;
+  
+}
+
+.slogan, .login {
+  padding: 25px 15px;
+  background-color: #FF4500;
+  
+}
+
+.rodape {
+  color: #C0C0C0;
+  padding-top: 25px;
+  padding-right: 15px;
+  padding-bottom: 50px;
+  padding-left: 15px;
+  background-color: #696969;
+}
+
+.slogan h1 {
+  margin: 0;
+  color: #fff;
+  font-size: 40px;
+  text-align: center;
+}
+
+.login {
+  text-align: center;
+}
+
+.email_usr, .senha_usr {
+  padding: 3px;
+}
+
+.botao {
+  color: white;
+  padding: 5px 15px;
+  border: 0;
+  background-color: #FF8C00;
+}
+
+.destinos {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 0 15px;
+  text-align: center;
+  column-count: 3;
+  column-gap: 0;
+}
+
+.destinos article {
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 20px;
+  margin-left: 5vw;
+}
+
+.destinos article img {
+  width: 25vw;
+  height: 35vh;  
+}
+
+.destinos article h5 {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.destinos form {
+  margin: 40px 0;
+}
+
+.destinos .botao {
+  padding: 5px 15px;
+  background-color: #127d00;
+  color: #fff;
+  text-decoration: none;
+}
+
+.telefone, .facebook, .whatsapp {
+  display: left;
+}
+
+.coluna_par {
+  position: relative;
+  margin-left: 5px;
+}
+
+.whatsapp {
+  position: relative;
+  left: 30px;
+}
+
+.facebook {
+  position: relative;
+  left: 65px;
+}
+
+.rodape a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Mouse sobre o link: */
+a:hover {
+  text-decoration: underline;
+}
