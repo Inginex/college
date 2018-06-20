@@ -223,6 +223,12 @@ passaporte como chave de pesquisa.
 - Permitir excluir uma pessoa do cadastro.
 - Permitir calcular e apresentar o total das vendas da empresa.
 
+### Exercícios 16
+##### Pratica 02
+- Usando HTML, CSS e AJAX, crie um algoritmo que carregue os arquivos locais relacionados
+ao conteúdo de cada uma das opções no menu do exercício anterior, quando essas opções
+forem clicadas pelo usuário.
+
 ### Exercícios 17
 ##### Pratica 03
 - O trecho de código abaixo, permite exibir fotos públicas do “site” Flickr,
