@@ -134,6 +134,35 @@ viagem para o respectivo destino.
 
 Resultado do código: [aqui](https://github.com/sampalm/college/tree/master/IHC/pratica09).
 
+### Exercícios 11
+##### Pratica 02
+- Usando HTML e CSS, altere o exemplo anterior. Acrescente o “link” para o “Parágrafo 03”.
+Usando apenas CSS, transforme visualmente todos os “links” em botões.
+
+##### Pratica 03
+- Usando HTML, CSS e JS, altere o exemplo anterior. Acrescente o botão “Clientes” no menu,
+com o respectivo elemento “div” para clientes. Acrescente um botão no menu, para limpar
+o conteúdo apresentado.
+
+##### Pratica 04
+- Usando HTML e CSS, altere o exemplo anterior. Acrescente novos parágrafos à página.
+Todos os parágrafos devem possuir fundo amarelo, exceto os que forem da classe
+“importante”. Os parágrafos da classe “importante” devem ter cor de fundo vermelha e
+fonte cinza.
+
+##### Pratica 05 
+- Usando HTML, CSS e JS, altere o exemplo do exercício anterior. A página deve possuir um
+campo para que o usuário informe a idade. Se a idade for menor que 18 anos, os campos
+devem ser desabilitados. Se a idade for maior ou igual a 18 anos, os campos devem ser
+habilitados.
+
+##### Pratica 07 
+- Usando HTML e CSS, altere o exemplo anterior. Todos os elementos que possuirem o
+atributo “class” com valor “notorio”, ou valor que começa com "notorio" seguido por hífen
+e terminando com qualquer coisa, inclusive espaços e outros valores devem receber:
+```border: .5rem solid #DA2F4E;```
+Criar os elementos necessários para attender a nova regra CSS criada.
+
 ### Exercícios 12
 ##### Pratica 02
 - Usando HTML, CSS e JS, altere o exemplo do exercício anterior incluindo o campo CPF no
