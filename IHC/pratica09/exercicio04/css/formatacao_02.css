@@ -3,13 +3,11 @@
 .slogan, .login, .rodape {
   max-width: 634px;
   margin-left: 25.05vw;
-  
 }
 
 .slogan, .login {
   padding: 25px 15px;
   background-color: #FF4500;
-  
 }
 
 .rodape {
@@ -44,10 +42,10 @@
 }
 
 .destinos {
-  max-width: 90%;
   margin: 0 auto;
   padding: 0 15px;
   text-align: center;
+  display: inline-block;
   column-count: 3;
   column-gap: 0;
 }
@@ -57,6 +55,7 @@
   margin-right: 0;
   margin-bottom: 20px;
   margin-left: 5vw;
+  display: inline-block;
 }
 
 .destinos article img {
@@ -80,8 +79,8 @@
   text-decoration: none;
 }
 
-.telefone, .facebook, .whatsapp {
-  display: left;
+.coluna_impar, .telefone, .facebook, .whatsapp {
+  display: inline-block;
 }
 
 .coluna_par {
@@ -107,4 +106,9 @@
 /* Mouse sobre o link: */
 a:hover {
   text-decoration: underline;
+}
+
+article > div {
+  padding: 5px;
+  border: 1px solid #0000004d;
 }
