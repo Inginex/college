@@ -9,7 +9,6 @@ public class Comanda {
     private int id_produto;
     private int cpf;
     private int codigo_funcionario;
-    private Date data;
     private String nome_comprador;
 
     public int getId() {
@@ -50,14 +49,6 @@ public class Comanda {
 
     public void setCodigoFunc(int codigo_funcionario) {
         this.codigo_funcionario = codigo_funcionario;
-    }
-
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
     }
 
     public String getNomeComp() {

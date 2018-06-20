@@ -15,7 +15,7 @@ public class ComandaDAO {
 
     public void save(Comanda comanda) {
         String sql = "INSERT INTO comanda(comanda,preco)"
-                + " VALUES(?,?,?)";
+                + " VALUES(?,?)";
 
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -37,8 +37,6 @@ public class ComandaDAO {
             pstm.setInt(4, comanda.getCPF());
             //Adiciona o valor do quinto parâmetro da sql
             pstm.setInt(5, comanda.getCodigoFunc());
-            //Adiciona o valor do sexto parâmetro da sql
-            pstm.setDate(6, (Date) comanda.getData());
             //Adiciona o valor do setimo parâmetro da sql
             pstm.setString(7, comanda.getNomeComp());
             //Executa a sql para inserção dos dados
@@ -130,8 +128,6 @@ public class ComandaDAO {
             pstm.setInt(4, comanda.getCPF());
             //Adiciona o valor do quinto parâmetro da sql
             pstm.setInt(5, comanda.getCodigoFunc());
-            //Adiciona o valor do sexto parâmetro da sql
-            pstm.setDate(6, (Date) comanda.getData());
             //Adiciona o valor do setimo parâmetro da sql
             pstm.setString(7, comanda.getNomeComp());
             //Executa a sql para inserção dos dados

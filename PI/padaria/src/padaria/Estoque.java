@@ -2,11 +2,9 @@ package padaria;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.util.Date;
 
 public class Estoque {
 
-    private Date data;
     private int id;
     private int quantidade;
     private int codigo_produto;
@@ -34,14 +32,6 @@ public class Estoque {
 
     public void setProduto(int codigo_produto) {
         this.codigo_produto = codigo_produto;
-    }
-
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
     }
 
     public int getFuncionario() {

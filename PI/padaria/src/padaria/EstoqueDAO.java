@@ -1,7 +1,6 @@
 package padaria;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,8 +14,8 @@ public class EstoqueDAO {
 
     public void save(Estoque estoque) {
 
-        String sql = "INSERT INTO estoque(id,codigo_produto,quantidade,data,funcionario)"
-                + " VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO estoque(id,codigo_produto,quantidade,funcionario)"
+                + " VALUES(?,?,?,?)";
 
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -31,7 +30,6 @@ public class EstoqueDAO {
             pstm.setInt(1, estoque.getId());
             pstm.setInt(2, estoque.getQuantidade());
             pstm.setInt(3, estoque.getProduto());
-            pstm.setDate(4, (Date) estoque.getData());
             pstm.setInt(5, estoque.getFuncionario());
 
             //Executa a sql para inserção dos dados
@@ -116,7 +114,6 @@ public class EstoqueDAO {
             pstm.setInt(1, estoque.getId());
             pstm.setInt(2, estoque.getQuantidade());
             pstm.setInt(3, estoque.getProduto());
-            pstm.setDate(4, (Date) estoque.getData());
             pstm.setInt(5, estoque.getFuncionario());
 
             pstm.setInt(5, estoque.getId());
@@ -173,7 +170,6 @@ public class EstoqueDAO {
                 pstm.setInt(1, estoque.getId());
                 pstm.setInt(2, estoque.getQuantidade());
                 pstm.setInt(3, estoque.getProduto());
-                pstm.setDate(4, (Date) estoque.getData());
                 pstm.setInt(5, estoque.getFuncionario());
 
                 estoques.add(estoque);
