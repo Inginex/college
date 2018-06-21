@@ -3,8 +3,8 @@ package view;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import model.bean.Produto;
-import model.dao.ProdutoDAO;
+import model.bean.Estoque;
+import model.dao.EstoqueDAO;
 
 public class ViewEstoque extends javax.swing.JFrame {
 
@@ -19,29 +19,18 @@ public class ViewEstoque extends javax.swing.JFrame {
     public void readJTable() {
         DefaultTableModel modelo = (DefaultTableModel) jTEstoque.getModel();
         modelo.setNumRows(0);
-        ProdutoDAO pdao = new ProdutoDAO();
-        for (Produto p : pdao.read()) {
+        EstoqueDAO edao = new EstoqueDAO();
+        for (Estoque e : edao.read()) {
             modelo.addRow(new Object[]{
-                p.getId(),
-                p.getNome(),
-                p.getPreco()
+                e.getId(),
+                e.getCodigoProduto(),
+                e.getQuantidade(),
+                e.getFuncionario()
             });
         }
     }
     
-    public void readJTableForNome(String nome) {
-        DefaultTableModel modelo = (DefaultTableModel) jTEstoque.getModel();
-        modelo.setNumRows(0);
-        ProdutoDAO pdao = new ProdutoDAO();
-        for (Produto p : pdao.readForNome(nome)) {
-            modelo.addRow(new Object[]{
-                p.getId(),
-                p.getNome(),
-                p.getPreco()
-            });
-        }
-    }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,15 +43,16 @@ public class ViewEstoque extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTEstoque = new javax.swing.JTable();
-        txtCPF = new javax.swing.JTextField();
+        txtCodigoProduto = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        txtCodigoFuncionario = new javax.swing.JTextField();
+        txtQuantidade = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtNomeComprador = new javax.swing.JTextField();
+        txtFuncionario = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -118,6 +108,9 @@ public class ViewEstoque extends javax.swing.JFrame {
 
         jLabel4.setText("Codigo Funcionario");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("Estoque");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -138,35 +131,41 @@ public class ViewEstoque extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtCPF)
+                                .addComponent(txtCodigoProduto)
                                 .addGap(55, 55, 55)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(txtCodigoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
-                            .addComponent(txtNomeComprador, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(15, 15, 15)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(286, 286, 286)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(263, 263, 263))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCodigoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCodigoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNomeComprador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
@@ -182,56 +181,62 @@ public class ViewEstoque extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // BOTAO CADASTRAR
-        Produto p = new Produto();
-        ProdutoDAO dao = new ProdutoDAO();
+        Estoque e = new Estoque();
+        EstoqueDAO dao = new EstoqueDAO();
 
-        p.setNome(txtCodigo.getText());
-        p.setPreco(Double.parseDouble(txtCPF.getText()));
-        dao.create(p);
+        e.setCodigoProduto(Integer.parseInt(txtCodigoProduto.getText()));
+        e.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
+        e.setFuncionario(Integer.parseInt(txtFuncionario.getText()));
+        dao.create(e);
 
-        txtCodigo.setText("");
-        txtCPF.setText("");
+        txtCodigoProduto.setText("");
+        txtQuantidade.setText("");
+        txtFuncionario.setText("");
         readJTable();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // BOTAO EXCLUIR
         if (jTEstoque.getSelectedRow() != -1) {
-            Produto p = new Produto();
-            ProdutoDAO dao = new ProdutoDAO();
+            Estoque e = new Estoque();
+            EstoqueDAO dao = new EstoqueDAO();
 
-            p.setId((int)jTEstoque.getValueAt(jTEstoque.getSelectedRow(), 0));
-            dao.delete(p);
+            e.setId((int)jTEstoque.getValueAt(jTEstoque.getSelectedRow(), 0));
+            dao.delete(e);
 
-            txtCodigo.setText("");
-            txtCPF.setText("");
+            txtCodigoProduto.setText("");
+            txtQuantidade.setText("");
+            txtFuncionario.setText("");
             readJTable();
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione um produto para excluir");
+            JOptionPane.showMessageDialog(null, "Selecione um produto do estoque para excluir");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTEstoqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTEstoqueMouseClicked
         // INSERI TEXTO NOS CAMPOS
         if (jTEstoque.getSelectedRow() != -1) {
-            txtCodigo.setText(jTEstoque.getValueAt(jTEstoque.getSelectedRow(), 1).toString());
-            txtCPF.setText(jTEstoque.getValueAt(jTEstoque.getSelectedRow(), 2).toString());
+            txtCodigoProduto.setText(jTEstoque.getValueAt(jTEstoque.getSelectedRow(), 1).toString());
+            txtQuantidade.setText(jTEstoque.getValueAt(jTEstoque.getSelectedRow(), 2).toString());
+            txtFuncionario.setText(jTEstoque.getValueAt(jTEstoque.getSelectedRow(), 3).toString());
         }
     }//GEN-LAST:event_jTEstoqueMouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // BOTAO ATUALIZAR
         if (jTEstoque.getSelectedRow() != -1) {
-            Produto p = new Produto();
-            ProdutoDAO dao = new ProdutoDAO();
+            Estoque e = new Estoque();
+            EstoqueDAO dao = new EstoqueDAO();
 
-            p.setNome(txtCodigo.getText());
-            p.setPreco(Double.parseDouble(txtCPF.getText()));
-            p.setId((int)jTEstoque.getValueAt(jTEstoque.getSelectedRow(), 0));
-            dao.update(p);
+            e.setCodigoProduto(Integer.parseInt(txtCodigoProduto.getText()));
+            e.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
+            e.setFuncionario(Integer.parseInt(txtFuncionario.getText()));
+            e.setId((int)jTEstoque.getValueAt(jTEstoque.getSelectedRow(), 0));
+            dao.update(e);
 
-            txtCodigo.setText("");
-            txtCPF.setText("");
+            txtCodigoProduto.setText("");
+            txtQuantidade.setText("");
+            txtFuncionario.setText("");
             readJTable();
         }
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -307,13 +312,14 @@ public class ViewEstoque extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTEstoque;
-    private javax.swing.JTextField txtCPF;
-    private javax.swing.JTextField txtCodigoFuncionario;
-    private javax.swing.JTextField txtNomeComprador;
+    private javax.swing.JTextField txtCodigoProduto;
+    private javax.swing.JTextField txtFuncionario;
+    private javax.swing.JTextField txtQuantidade;
     // End of variables declaration//GEN-END:variables
 }

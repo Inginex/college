@@ -3,8 +3,8 @@ package view;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import model.bean.Produto;
-import model.dao.ProdutoDAO;
+import model.bean.Comanda;
+import model.dao.ComandaDAO;
 
 public class ViewComanda extends javax.swing.JFrame {
 
@@ -19,25 +19,13 @@ public class ViewComanda extends javax.swing.JFrame {
     public void readJTable() {
         DefaultTableModel modelo = (DefaultTableModel) jTComanda.getModel();
         modelo.setNumRows(0);
-        ProdutoDAO pdao = new ProdutoDAO();
-        for (Produto p : pdao.read()) {
+        ComandaDAO cdao = new ComandaDAO();
+        for (Comanda c : cdao.read()) {
             modelo.addRow(new Object[]{
-                p.getId(),
-                p.getNome(),
-                p.getPreco()
-            });
-        }
-    }
-    
-    public void readJTableForNome(String nome) {
-        DefaultTableModel modelo = (DefaultTableModel) jTComanda.getModel();
-        modelo.setNumRows(0);
-        ProdutoDAO pdao = new ProdutoDAO();
-        for (Produto p : pdao.readForNome(nome)) {
-            modelo.addRow(new Object[]{
-                p.getId(),
-                p.getNome(),
-                p.getPreco()
+                c.getCodigo(),
+                c.getCpf(),
+                c.getCodigoFuncionario(),
+                c.getCliente()
             });
         }
     }
@@ -61,8 +49,9 @@ public class ViewComanda extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         txtCodigoFuncionario = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtNomeComprador = new javax.swing.JTextField();
+        txtCliente = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -118,6 +107,9 @@ public class ViewComanda extends javax.swing.JFrame {
 
         jLabel4.setText("Cliente");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("Comanda");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -138,7 +130,7 @@ public class ViewComanda extends javax.swing.JFrame {
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addComponent(txtCPF))
                                 .addGap(77, 77, 77)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
@@ -146,17 +138,23 @@ public class ViewComanda extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
-                                    .addComponent(txtNomeComprador, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtCliente)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(267, 267, 267)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(295, 295, 295))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -169,7 +167,7 @@ public class ViewComanda extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNomeComprador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
@@ -185,56 +183,62 @@ public class ViewComanda extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // BOTAO CADASTRAR
-        Produto p = new Produto();
-        ProdutoDAO dao = new ProdutoDAO();
+        Comanda c = new Comanda();
+        ComandaDAO dao = new ComandaDAO();
 
-        p.setNome(txtCodigo.getText());
-        p.setPreco(Double.parseDouble(txtCPF.getText()));
-        dao.create(p);
+        c.setCpf(txtCPF.getText());
+        c.setCodigoFuncionario(Integer.parseInt(txtCodigoFuncionario.getText()));
+        c.setCliente(txtCliente.getText());
+        dao.create(c);
 
-        txtCodigo.setText("");
         txtCPF.setText("");
+        txtCodigoFuncionario.setText("");
+        txtCliente.setText("");
         readJTable();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // BOTAO EXCLUIR
         if (jTComanda.getSelectedRow() != -1) {
-            Produto p = new Produto();
-            ProdutoDAO dao = new ProdutoDAO();
+            Comanda c = new Comanda();
+            ComandaDAO dao = new ComandaDAO();
 
-            p.setId((int)jTComanda.getValueAt(jTComanda.getSelectedRow(), 0));
-            dao.delete(p);
+            c.setCodigo((int)jTComanda.getValueAt(jTComanda.getSelectedRow(), 0));
+            dao.delete(c);
 
-            txtCodigo.setText("");
             txtCPF.setText("");
+            txtCodigoFuncionario.setText("");
+            txtCliente.setText("");
             readJTable();
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione um produto para excluir");
+            JOptionPane.showMessageDialog(null, "Selecione uma comanda para excluir");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTComandaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTComandaMouseClicked
         // INSERI TEXTO NOS CAMPOS
         if (jTComanda.getSelectedRow() != -1) {
-            txtCodigo.setText(jTComanda.getValueAt(jTComanda.getSelectedRow(), 1).toString());
-            txtCPF.setText(jTComanda.getValueAt(jTComanda.getSelectedRow(), 2).toString());
+            txtCPF.setText(jTComanda.getValueAt(jTComanda.getSelectedRow(), 1).toString());
+            txtCodigoFuncionario.setText(jTComanda.getValueAt(jTComanda.getSelectedRow(), 2).toString());
+            txtCliente.setText(jTComanda.getValueAt(jTComanda.getSelectedRow(), 3).toString());
         }
     }//GEN-LAST:event_jTComandaMouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // BOTAO ATUALIZAR
         if (jTComanda.getSelectedRow() != -1) {
-            Produto p = new Produto();
-            ProdutoDAO dao = new ProdutoDAO();
+            Comanda c = new Comanda();
+            ComandaDAO dao = new ComandaDAO();
 
-            p.setNome(txtCodigo.getText());
-            p.setPreco(Double.parseDouble(txtCPF.getText()));
-            p.setId((int)jTComanda.getValueAt(jTComanda.getSelectedRow(), 0));
-            dao.update(p);
+            c.setCpf(txtCPF.getText());
+            c.setCodigoFuncionario(Integer.parseInt(txtCodigoFuncionario.getText()));
+            c.setCliente(txtCliente.getText());
+            c.setCodigo((int)jTComanda.getValueAt(jTComanda.getSelectedRow(), 0));
+            dao.update(c);
 
-            txtCodigo.setText("");
             txtCPF.setText("");
+            txtCodigoFuncionario.setText("");
+            txtCliente.setText("");
             readJTable();
         }
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -286,13 +290,14 @@ public class ViewComanda extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTComanda;
     private javax.swing.JTextField txtCPF;
+    private javax.swing.JTextField txtCliente;
     private javax.swing.JTextField txtCodigoFuncionario;
-    private javax.swing.JTextField txtNomeComprador;
     // End of variables declaration//GEN-END:variables
 }

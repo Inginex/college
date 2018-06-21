@@ -83,21 +83,33 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Comanda"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBComandaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBEstoque">
       <Properties>
         <Property name="text" type="java.lang.String" value="Estoque"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBEstoqueActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBFuncionario">
       <Properties>
         <Property name="text" type="java.lang.String" value="Funcionario"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBFuncionarioActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBItens">
       <Properties>
         <Property name="text" type="java.lang.String" value="Itens Comanda"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBItensActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>

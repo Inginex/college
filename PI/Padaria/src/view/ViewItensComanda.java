@@ -3,8 +3,8 @@ package view;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import model.bean.Produto;
-import model.dao.ProdutoDAO;
+import model.bean.ItensComanda;
+import model.dao.ItensComandaDAO;
 
 public class ViewItensComanda extends javax.swing.JFrame {
 
@@ -19,25 +19,13 @@ public class ViewItensComanda extends javax.swing.JFrame {
     public void readJTable() {
         DefaultTableModel modelo = (DefaultTableModel) jTItensComanda.getModel();
         modelo.setNumRows(0);
-        ProdutoDAO pdao = new ProdutoDAO();
-        for (Produto p : pdao.read()) {
+        ItensComandaDAO idao = new ItensComandaDAO();
+        for (ItensComanda ic : idao.read()) {
             modelo.addRow(new Object[]{
-                p.getId(),
-                p.getNome(),
-                p.getPreco()
-            });
-        }
-    }
-    
-    public void readJTableForNome(String nome) {
-        DefaultTableModel modelo = (DefaultTableModel) jTItensComanda.getModel();
-        modelo.setNumRows(0);
-        ProdutoDAO pdao = new ProdutoDAO();
-        for (Produto p : pdao.readForNome(nome)) {
-            modelo.addRow(new Object[]{
-                p.getId(),
-                p.getNome(),
-                p.getPreco()
+                ic.getId(),
+                ic.getIdComanda(),
+                ic.getIdProduto(),
+                ic.getQuantidade()
             });
         }
     }
@@ -54,15 +42,16 @@ public class ViewItensComanda extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTItensComanda = new javax.swing.JTable();
-        txtCPF = new javax.swing.JTextField();
+        txtIdComanda = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        txtCodigoFuncionario = new javax.swing.JTextField();
+        txtIdProduto = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtNomeComprador = new javax.swing.JTextField();
+        txtQuantidade = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -118,6 +107,9 @@ public class ViewItensComanda extends javax.swing.JFrame {
 
         jLabel4.setText("Quantidade");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("Itens da Comanda");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,41 +124,44 @@ public class ViewItensComanda extends javax.swing.JFrame {
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtCPF)
+                                .addComponent(txtIdComanda)
                                 .addGap(55, 55, 55)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(txtCodigoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtIdProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
                         .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
-                            .addComponent(txtNomeComprador, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(15, 15, 15)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtIdComanda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCodigoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtIdProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNomeComprador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
@@ -182,56 +177,62 @@ public class ViewItensComanda extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // BOTAO CADASTRAR
-        Produto p = new Produto();
-        ProdutoDAO dao = new ProdutoDAO();
+        ItensComanda ic = new ItensComanda();
+        ItensComandaDAO dao = new ItensComandaDAO();
 
-        p.setNome(txtCodigo.getText());
-        p.setPreco(Double.parseDouble(txtCPF.getText()));
-        dao.create(p);
+        ic.setIdComanda(Integer.parseInt(txtIdComanda.getText()));
+        ic.setIdProduto(Integer.parseInt(txtIdProduto.getText()));
+        ic.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
+        dao.create(ic);
 
-        txtCodigo.setText("");
-        txtCPF.setText("");
+        txtIdComanda.setText("");
+        txtIdProduto.setText("");
+        txtQuantidade.setText("");
         readJTable();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // BOTAO EXCLUIR
         if (jTItensComanda.getSelectedRow() != -1) {
-            Produto p = new Produto();
-            ProdutoDAO dao = new ProdutoDAO();
+            ItensComanda ic = new ItensComanda();
+            ItensComandaDAO dao = new ItensComandaDAO();
 
-            p.setId((int)jTItensComanda.getValueAt(jTItensComanda.getSelectedRow(), 0));
-            dao.delete(p);
+            ic.setId((int)jTItensComanda.getValueAt(jTItensComanda.getSelectedRow(), 0));
+            dao.delete(ic);
 
-            txtCodigo.setText("");
-            txtCPF.setText("");
+            txtIdComanda.setText("");
+            txtIdProduto.setText("");
+            txtQuantidade.setText("");
             readJTable();
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione um produto para excluir");
+            JOptionPane.showMessageDialog(null, "Selecione um item da comanda para excluir");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTItensComandaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTItensComandaMouseClicked
         // INSERI TEXTO NOS CAMPOS
         if (jTItensComanda.getSelectedRow() != -1) {
-            txtCodigo.setText(jTItensComanda.getValueAt(jTItensComanda.getSelectedRow(), 1).toString());
-            txtCPF.setText(jTItensComanda.getValueAt(jTItensComanda.getSelectedRow(), 2).toString());
+            txtIdComanda.setText(jTItensComanda.getValueAt(jTItensComanda.getSelectedRow(), 1).toString());
+            txtIdProduto.setText(jTItensComanda.getValueAt(jTItensComanda.getSelectedRow(), 2).toString());
+            txtQuantidade.setText(jTItensComanda.getValueAt(jTItensComanda.getSelectedRow(), 3).toString());
         }
     }//GEN-LAST:event_jTItensComandaMouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // BOTAO ATUALIZAR
         if (jTItensComanda.getSelectedRow() != -1) {
-            Produto p = new Produto();
-            ProdutoDAO dao = new ProdutoDAO();
+            ItensComanda ic = new ItensComanda();
+            ItensComandaDAO dao = new ItensComandaDAO();
 
-            p.setNome(txtCodigo.getText());
-            p.setPreco(Double.parseDouble(txtCPF.getText()));
-            p.setId((int)jTItensComanda.getValueAt(jTItensComanda.getSelectedRow(), 0));
-            dao.update(p);
+            ic.setIdComanda(Integer.parseInt(txtIdComanda.getText()));
+            ic.setIdProduto(Integer.parseInt(txtIdProduto.getText()));
+            ic.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
+            ic.setId((int)jTItensComanda.getValueAt(jTItensComanda.getSelectedRow(), 0));
+            dao.update(ic);
 
-            txtCodigo.setText("");
-            txtCPF.setText("");
+            txtIdComanda.setText("");
+            txtIdProduto.setText("");
+            txtQuantidade.setText("");
             readJTable();
         }
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -339,13 +340,14 @@ public class ViewItensComanda extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTItensComanda;
-    private javax.swing.JTextField txtCPF;
-    private javax.swing.JTextField txtCodigoFuncionario;
-    private javax.swing.JTextField txtNomeComprador;
+    private javax.swing.JTextField txtIdComanda;
+    private javax.swing.JTextField txtIdProduto;
+    private javax.swing.JTextField txtQuantidade;
     // End of variables declaration//GEN-END:variables
 }

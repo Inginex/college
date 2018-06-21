@@ -3,8 +3,8 @@ package view;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import model.bean.Produto;
-import model.dao.ProdutoDAO;
+import model.bean.Funcionario;
+import model.dao.FuncionarioDAO;
 
 public class ViewFuncionario extends javax.swing.JFrame {
 
@@ -19,12 +19,13 @@ public class ViewFuncionario extends javax.swing.JFrame {
     public void readJTable() {
         DefaultTableModel modelo = (DefaultTableModel) jTFuncionarios.getModel();
         modelo.setNumRows(0);
-        ProdutoDAO pdao = new ProdutoDAO();
-        for (Produto p : pdao.read()) {
+        FuncionarioDAO fdao = new FuncionarioDAO();
+        for (Funcionario f : fdao.read()) {
             modelo.addRow(new Object[]{
-                p.getId(),
-                p.getNome(),
-                p.getPreco()
+                f.getId(),
+                f.getNome(),
+                f.getSetor(),
+                f.getStatus()
             });
         }
     }
@@ -32,12 +33,13 @@ public class ViewFuncionario extends javax.swing.JFrame {
     public void readJTableForNome(String nome) {
         DefaultTableModel modelo = (DefaultTableModel) jTFuncionarios.getModel();
         modelo.setNumRows(0);
-        ProdutoDAO pdao = new ProdutoDAO();
-        for (Produto p : pdao.readForNome(nome)) {
+        FuncionarioDAO fdao = new FuncionarioDAO();
+        for (Funcionario f : fdao.readForNome(nome)) {
             modelo.addRow(new Object[]{
-                p.getId(),
-                p.getNome(),
-                p.getPreco()
+                f.getId(),
+                f.getNome(),
+                f.getSetor(),
+                f.getStatus()
             });
         }
     }
@@ -55,7 +57,7 @@ public class ViewFuncionario extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTFuncionarios = new javax.swing.JTable();
         txtNome = new javax.swing.JTextField();
-        txtPreco = new javax.swing.JTextField();
+        txtSetor = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -63,7 +65,8 @@ public class ViewFuncionario extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        txtPreco1 = new javax.swing.JTextField();
+        txtStatus = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -126,6 +129,9 @@ public class ViewFuncionario extends javax.swing.JFrame {
 
         jLabel3.setText("Status");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setText("Funcionarios");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -133,16 +139,17 @@ public class ViewFuncionario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtNome)
-                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addGap(142, 142, 142)))
-                        .addGap(12, 12, 12)
+                                .addGap(154, 154, 154))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -153,18 +160,24 @@ public class ViewFuncionario extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
-                                    .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(28, 28, 28)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
-                                    .addComponent(txtPreco1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(269, 269, 269)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(273, 273, 273))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -173,12 +186,12 @@ public class ViewFuncionario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtSetor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPreco1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
@@ -194,32 +207,35 @@ public class ViewFuncionario extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // BOTAO CADASTRAR
-        Produto p = new Produto();
-        ProdutoDAO dao = new ProdutoDAO();
+        Funcionario f = new Funcionario();
+        FuncionarioDAO fdao = new FuncionarioDAO();
 
-        p.setNome(txtNome.getText());
-        p.setPreco(Double.parseDouble(txtPreco.getText()));
-        dao.create(p);
+        f.setNome(txtNome.getText());
+        f.setSetor(txtSetor.getText());
+        f.setStatus(Integer.parseInt(txtStatus.getText()));
+        fdao.create(f);
 
         txtNome.setText("");
-        txtPreco.setText("");
+        txtSetor.setText("");
+        txtStatus.setText("");
         readJTable();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // BOTAO EXCLUIR
         if (jTFuncionarios.getSelectedRow() != -1) {
-            Produto p = new Produto();
-            ProdutoDAO dao = new ProdutoDAO();
+            Funcionario f = new Funcionario();
+            FuncionarioDAO fdao = new FuncionarioDAO();
 
-            p.setId((int)jTFuncionarios.getValueAt(jTFuncionarios.getSelectedRow(), 0));
-            dao.delete(p);
+            f.setId((int)jTFuncionarios.getValueAt(jTFuncionarios.getSelectedRow(), 0));
+            fdao.delete(f);
 
             txtNome.setText("");
-            txtPreco.setText("");
+            txtSetor.setText("");
+            txtStatus.setText("");
             readJTable();
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione um produto para excluir");
+            JOptionPane.showMessageDialog(null, "Selecione um funcionario para excluir");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -227,23 +243,26 @@ public class ViewFuncionario extends javax.swing.JFrame {
         // INSERI TEXTO NOS CAMPOS
         if (jTFuncionarios.getSelectedRow() != -1) {
             txtNome.setText(jTFuncionarios.getValueAt(jTFuncionarios.getSelectedRow(), 1).toString());
-            txtPreco.setText(jTFuncionarios.getValueAt(jTFuncionarios.getSelectedRow(), 2).toString());
+            txtSetor.setText(jTFuncionarios.getValueAt(jTFuncionarios.getSelectedRow(), 2).toString());
+            txtStatus.setText(jTFuncionarios.getValueAt(jTFuncionarios.getSelectedRow(), 3).toString());
         }
     }//GEN-LAST:event_jTFuncionariosMouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // BOTAO ATUALIZAR
         if (jTFuncionarios.getSelectedRow() != -1) {
-            Produto p = new Produto();
-            ProdutoDAO dao = new ProdutoDAO();
+            Funcionario f = new Funcionario();
+            FuncionarioDAO fdao = new FuncionarioDAO();
 
-            p.setNome(txtNome.getText());
-            p.setPreco(Double.parseDouble(txtPreco.getText()));
-            p.setId((int)jTFuncionarios.getValueAt(jTFuncionarios.getSelectedRow(), 0));
-            dao.update(p);
+            f.setNome(txtNome.getText());
+            f.setSetor(txtSetor.getText());
+            f.setStatus(Integer.parseInt(txtStatus.getText()));
+            f.setId((int)jTFuncionarios.getValueAt(jTFuncionarios.getSelectedRow(), 0));
+            fdao.update(f);
 
             txtNome.setText("");
-            txtPreco.setText("");
+            txtSetor.setText("");
+            txtStatus.setText("");
             readJTable();
         }
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -304,10 +323,11 @@ public class ViewFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTFuncionarios;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtPreco;
-    private javax.swing.JTextField txtPreco1;
+    private javax.swing.JTextField txtSetor;
+    private javax.swing.JTextField txtStatus;
     // End of variables declaration//GEN-END:variables
 }

@@ -44,12 +44,32 @@ public class ViewMain extends javax.swing.JFrame {
         });
 
         jBComanda.setText("Comanda");
+        jBComanda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBComandaActionPerformed(evt);
+            }
+        });
 
         jBEstoque.setText("Estoque");
+        jBEstoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEstoqueActionPerformed(evt);
+            }
+        });
 
         jBFuncionario.setText("Funcionario");
+        jBFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBFuncionarioActionPerformed(evt);
+            }
+        });
 
         jBItens.setText("Itens Comanda");
+        jBItens.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBItensActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Tabelas Disponíveis");
@@ -102,6 +122,26 @@ public class ViewMain extends javax.swing.JFrame {
         // TODO add your handling code here:
         new ViewProduto().setVisible(true);
     }//GEN-LAST:event_jBProdutoActionPerformed
+
+    private void jBComandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBComandaActionPerformed
+        // TODO add your handling code here:
+        new ViewComanda().setVisible(true);
+    }//GEN-LAST:event_jBComandaActionPerformed
+
+    private void jBEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEstoqueActionPerformed
+        // TODO add your handling code here:
+        new ViewEstoque().setVisible(true);
+    }//GEN-LAST:event_jBEstoqueActionPerformed
+
+    private void jBFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFuncionarioActionPerformed
+        // TODO add your handling code here:
+        new ViewFuncionario().setVisible(true);
+    }//GEN-LAST:event_jBFuncionarioActionPerformed
+
+    private void jBItensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBItensActionPerformed
+        // TODO add your handling code here:
+        new ViewItensComanda().setVisible(true);
+    }//GEN-LAST:event_jBItensActionPerformed
 
     /**
      * @param args the command line arguments
