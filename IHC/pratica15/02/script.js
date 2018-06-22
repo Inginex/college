@@ -6,7 +6,7 @@ class Pessoa {
     setTelefone(numero) {
         this.telefone = numero;
     }
-    setCompra(valor){
+    setCompra(valor) {
         this.valor = valor;
     }
     setMetodos(metodos) {
@@ -15,7 +15,7 @@ class Pessoa {
     getTelefone() {
         return this.telefone;
     }
-    getCompra(){
+    getCompra() {
         return this.valor;
     }
     getMetodos() {
@@ -29,6 +29,22 @@ class PessoaFisica extends Pessoa {
         this.cpf = cpf;
         this.metodos = metodos;
     }
+
+    getNome() {
+        return this.nome;
+    }
+    getMetodos() {
+        return this.metodos;
+    }
+    getTelefone() {
+        return this.telefone;
+    }
+    getValor() {
+        return this.valor;
+    }
+    getUID() {
+        return this.cpf;
+    }
 }
 
 class PessoaJuridica extends Pessoa {
@@ -37,6 +53,22 @@ class PessoaJuridica extends Pessoa {
         this.cnpj = cnpj;
         this.metodos = metodos;
     }
+
+    getNome() {
+        return this.nome;
+    }
+    getMetodos() {
+        return this.metodos;
+    }
+    getTelefone() {
+        return this.telefone;
+    }
+    getValor() {
+        return this.valor;
+    }
+    getUID() {
+        return this.cnpj;
+    }
 }
 
 class PessoaEstrangeira extends Pessoa {
@@ -44,6 +76,22 @@ class PessoaEstrangeira extends Pessoa {
         super(nome);
         this.passaporte = passaporte;
         this.metodos = metodos;
+    }
+
+    getNome() {
+        return this.nome;
+    }
+    getMetodos() {
+        return this.metodos;
+    }
+    getTelefone() {
+        return this.telefone;
+    }
+    getValor() {
+        return this.valor;
+    }
+    getUID() {
+        return this.passaporte;
     }
 }
 
@@ -104,32 +152,51 @@ const cpf = document.querySelector("input[name='cpf']")
 const cnpj = document.querySelector("input[name='cnpj']")
 const pass = document.querySelector("input[name='pass']")
 
-function VerificaCampos(){
+const tableContent = document.querySelector("table")
+
+function VerificaCampos() {
     return true
 }
 
-function cadastraCPF(){
+function cadastraCPF() {
     const pf = new PessoaFisica(nome.value, cpf.value)
     pf.setTelefone(telefone.value)
+    pf.setCompra(valor.value)
     Cadastrar(pf)
-    console.log("DB Updated: \n", pessoas)
+    atualizaDOM(pf)
+    console.log("DB Updated: \n", pessoas) 
 }
 
-function cadastraCNPJ(){
+function cadastraCNPJ() {
     const pj = new PessoaJuridica(nome.value, cnpj.value)
     pj.setTelefone(telefone.value)
+    pj.setCompra(valor.value)
     Cadastrar(pj)
+    atualizaDOM(pj)
     console.log("DB Updated: \n", pessoas)
 }
 
-function cadastraPass(){
+function cadastraPass() {
     const pe = new PessoaEstrangeira(nome.value, pass.value)
     pe.setTelefone(telefone.value)
+    pe.setCompra(valor.value)
     Cadastrar(pe)
+    atualizaDOM(pe)
     console.log("DB Updated: \n", pessoas)
 }
 
-btnCPF.onclick = function() {
+function atualizaDOM(pessoa) {
+    let dados = "";
+    dados = `<tr>
+        <td>${pessoa.getNome()}</td>
+        <td>${pessoa.getTelefone()}</td>
+        <td>${pessoa.getValor()}</td>
+        <td>${pessoa.getUID()}</td>
+        </tr>`;
+    tableContent.insertAdjacentHTML("beforeend", dados)
+}
+
+btnCPF.onclick = function () {
     if (!VerificaCampos()) {
         // a verificação falhou
         console.log("Validação falhou.")
@@ -137,7 +204,7 @@ btnCPF.onclick = function() {
     cadastraCPF()
 }
 
-btnCNPJ.onclick = function() {
+btnCNPJ.onclick = function () {
     if (!VerificaCampos()) {
         // a verificação falhou
         console.log("Validação falhou.")
@@ -145,10 +212,11 @@ btnCNPJ.onclick = function() {
     cadastraCNPJ()
 }
 
-btnPass.onclick = function() {
+btnPass.onclick = function () {
     if (!VerificaCampos()) {
         // a verificação falhou
         console.log("Validação falhou.")
     }
     cadastraPass()
 }
+
