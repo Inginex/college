@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        html {
+            font-family: "Segoe UI", "Helvetica Neue", Verdana, Arial, sans-serif;
+            font-size: 16px;
+            height: 95%;
+        }
+
+        label,
+        input {
+            padding: .5rem;
+            margin: 1rem;
+        }
+
+        input[type=text]:enabled {
+            background: #ffff00;
+        }
+
+        input[type='text']:disabled {
+            background: #E01E1E;
+        }
+
+        input[type="text"]:disabled::placeholder {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <label>Nome:
+        <input type="text" placeholder="Informe seu
+nome.">
+    </label>
+    <br>
+    <label>Idade:
+        <input type="text" placeholder="Informe sua
+    idade.">
+    </label>
+    <br>
+    <label>Cidade:
+        <input type="text" placeholder="Informe sua
+cidade.">
+    </label>
+    <br>
+    <label>Estado:
+        <input type="text" disabled="disabled" value="Informe seu
+estado.">
+    </label>
+    <br>
+    <label>País:
+        <input type="text" disabled="disabled" placeholder="Informe
+seu país.">
+    </label>
+    <br>
+    <input type="submit" value="Ok" disabled="disabled">
+
+    <script>
+        const inputs = document.querySelectorAll("input")
+        const idade = inputs[1]
+        idade.onblur = () => {
+            if (idade.value < 18) {
+                inputs.forEach(function(inp){ inp.disabled = true; })
+                idade.disabled = false;
+                return
+            }
+            inputs.forEach(function(inp){ inp.disabled = false; })   
+        }
+    </script>
+</body>
+
+</html>
