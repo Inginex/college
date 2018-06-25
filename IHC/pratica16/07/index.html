@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title> Oficina Mecânica</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+</head>
+
+<body>
+    <section>
+        <header>Oficina Mecânica</header>
+        <div>
+            <nav>
+                <ul>
+                    <li class="titulo">Menu</li>
+                    <li>Home</li>
+                    <li>Cadastro</li>
+                    <li>Planos e Preços</li>
+                    <li>Contato</li>
+                </ul>
+            </nav>
+            <main></main>
+        </div>
+        <footer>Rua Bustamante Faria, n. 532, Imperial, Belo Horizonte, MG.
+        </footer>
+    </section>
+    <script>
+        const home = document.querySelectorAll("li")[1];
+        const cadastro = document.querySelectorAll("li")[2];
+        const planos = document.querySelectorAll("li")[3];
+        const contato = document.querySelectorAll("li")[4];
+
+        home.onclick = function(){
+            $.ajax({
+                url: "pages/home.html",
+                dataType: "html",
+                success: function(resp, status, XMLHttpRequest) {
+                    $("main").html(resp);
+                }
+            })
+        }
+        cadastro.onclick = function(){
+            $.ajax({
+                url: "pages/cadastro.html",
+                dataType: "html",
+                success: function(resp, status, XMLHttpRequest) {
+                    $("main").html(resp);
+                }
+            })
+        }
+        planos.onclick = function(){
+            $.ajax({
+                url: "pages/planos.html",
+                dataType: "html",
+                success: function(resp, status, XMLHttpRequest) {
+                    $("main").html(resp);
+                }
+            })
+        }
+        contato.onclick = function(){
+            $.ajax({
+                url: "pages/contato.html",
+                dataType: "html",
+                success: function(resp, status, XMLHttpRequest) {
+                    $("main").html(resp);
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
