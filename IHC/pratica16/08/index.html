@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $.ajax({
+                    url: "arq.txt",
+                    dataType: "text", //Formato do conteúdo do arquivo arq.txt,formato da resposta.
+                    beforeSend: function () {
+                        alert("Mensagem apresentada antes do envio da requisição!");
+                    },
+                    done: function (resp, status, XMLHttpRequest) {
+                        $("#div1").html("SUCESSO!!! Parâmetro 'resp': " + resp);
+                    },
+                    fail: function (XMLHttpRequest, status, erro) {
+                        $("#div2").html("ERRO!!! Parâmetro 'status': " +
+                            status);
+                    },
+                    always: function () {
+                        alert("Mensagem apresentada após o recebimento daresposta!");
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="div1">
+        <h2>Permita que AJAX mude este texto.</h2>
+    </div>
+    <div id="div2"></div>
+    <button>Trocar Conteúdo</button>
+</body>
+
+</html>
