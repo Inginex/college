@@ -253,10 +253,15 @@ passaporte como chave de pesquisa.
 - Permitir calcular e apresentar o total das vendas da empresa.
 
 ### Exercícios 16
-##### Pratica 02
+##### Pratica 07
 - Usando HTML, CSS e AJAX, crie um algoritmo que carregue os arquivos locais relacionados
 ao conteúdo de cada uma das opções no menu do exercício anterior, quando essas opções
 forem clicadas pelo usuário.
+
+##### Pratica 08
+- Carregar o arquivo pratica16exercicio08.html no navegador, interagir com a página gerada e
+observar o resultado. Altere o algoritmo do exercício anterior, substituindo success, error e
+complete pelos correspondentes .done (), .fail () e .always ().
 
 ### Exercícios 17
 ##### Pratica 03
