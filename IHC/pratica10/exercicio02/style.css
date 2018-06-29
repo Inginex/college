@@ -10,3 +10,22 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
     background-color: #dfe3ee;
 }
+tr.disciplina {
+    vertical-align: top;
+}
+tr.disciplina td {
+    padding: 5px;
+}
+tr.media {
+    background-color: red;
+}
+#mensagem {
+    padding: 10px;
+    border: 1px solid red;
+    text-align: center;
+    background-color: grey;
+    color: white;
+    font-size: large;
+    max-width: 528px;
+    display: none;
+}
