@@ -134,6 +134,23 @@ viagem para o respectivo destino.
 
 Resultado do código: [aqui](https://github.com/sampalm/college/tree/master/IHC/pratica09).
 
+### Exercícios 09
+##### Pratica 01
+- Ao clicar em alguma das linhas da tabela, deve ser apresentado um texto descritivo a respeito da
+linha.
+
+##### Pratica 02
+- Usando HTML, CSS e JS, crie a tabela abaixo, gerando os arquivos pratica10exercicio02.html,
+pratica10exercicio02.css, pratica10exercicio02.js. Aplique a propriedade CSS “vertical-align:
+top;”. Ao passar o mouse sobre alguma das linhas ou colunas da tabela, deve ser apresentada uma
+formatação diferente para a linha ou coluna, conforme apresentado abaixo. Ao passar o mouse sobre alguma das linhas da tabela, deve ser apresentado um texto descritivo a respeito da linha.
+
+##### Pratica 03
+- Usando HTML, CSS e JS, crie a tabela abaixo, gerando os arquivos pratica10exercicio03.html,
+pratica10exercicio03.css, pratica10exercicio03.js. Aplique a propriedade CSS “vertical-align:
+top;”. Ao passar o mouse sobre alguma das linhas ou colunas da tabela, deve ser apresentada
+uma formatação diferente para a linha ou coluna, conforme apresentado abaixo. Ao passar o mouse sobre alguma das linhas ou colunas da tabela, deve ser apresentado um texto descritivo a respeito da linha.
+
 ### Exercícios 11
 ##### Pratica 02
 - Usando HTML e CSS, altere o exemplo anterior. Acrescente o “link” para o “Parágrafo 03”.
@@ -289,3 +306,29 @@ informar:
     * Nome do filme.
     * Dia e horário da sessão.
     * Lugar, poltrona, na sala em que deseja assistir ao filme.
+
+### Exercícios 19
+##### Pratica 05
+- Usando HTML, CSS e JavaScript, criar um álbum de fotografias responsivo, empregando
+media query. Salvar os arquivos com os nomes pratica19exercicio05.html,
+pratica19exercicio05.css e pratica19exercicio05.js, respectivamente.
+
+### Exercícios 20
+##### Pratica 08
+- Usando HTML, CSS, JavaScript e Bootstrap, criar um álbum de fotografias responsivo.
+Salvar os arquivos com os nomes pratica20exercicio07.html, pratica20exercicio07.css e
+pratica20exercicio07.js, respectivamente.
+
+### Exercícios 21 
+##### Pratica 01
+- Usando o pacote Java Swing, criar uma interface da sua escolha contendo:
+a) JFrame: contêiner (formulário) para outros componentes GUI.
+b) JLabel: área em que podem ser exibidos texto não-editável ou ícones.
+c) JTextField: área em que o usuário insere dados pelo teclado.
+d) JButton: área que aciona um evento quando o usuário clica.
+e) JCheckBox: possui dois estados: selecionado ou não-selecionado.
+f) JComboBox: lista de itens em que o usuário pode fazer uma seleção, clicando em um item
+na lista ou digitando na caixa.
+g) JList: área em que uma lista é exibida, possibilitando a seleção clicando em qualquer item da
+lista.
+h) JPanel: contêiner em que os componentes podem ser colocados.
