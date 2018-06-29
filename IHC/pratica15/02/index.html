@@ -7,32 +7,31 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pratica 15</title>
 </head>
-
 <body>
-    <div id="form-cpf">
+    <h1>Cadastrar Pessoa</h1>
+    <div id="form">
         <input type="text" name="nome" placeholder="Seu nome">
         <input type="text" name="telefone" placeholder="Seu telefone">
         <input type="text" name="valor" placeholder="Valor">
         <input type="text" name="cpf" placeholder="Seu CPF">
-        <button id="btn-cpf">Concluir</button>
-    </div>
-    <div id="form-cnpj">
-        <input type="text" name="nome" placeholder="Seu nome">
-        <input type="text" name="telefone" placeholder="Seu telefone">
-        <input type="text" name="valor" placeholder="Valor">
         <input type="text" name="cnpj" placeholder="Seu CNPJ">
-        <button id="btn-cnpj">Concluir</button>
-    </div>
-    <div id="form-pass">
-        <input type="text" name="nome" placeholder="Seu nome">
-        <input type="text" name="telefone" placeholder="Seu telefone">
-        <input type="text" name="valor" placeholder="Valor">
         <input type="text" name="pass" placeholder="Seu Passaporte">
-        <button id="btn-pass">Concluir</button>
+        <button id="btn">Concluir</button>
     </div>
     <br>
     <div id="dados">
         <h2>Dados Cadastrados</h2>
+        <div id="vendas">
+            <p id="calculo"></p>
+            <input type="button" value="Calcular Vendas" id="calcular">
+        </div>
+        <br>
+        <div id="search-box">
+            <label for="pesquisa">Pesquisar:</label>
+            <input type="text" name="pesquisa" id="pesquisa" placeholder="Pequise por Nome/CPF/CNPJ/Passaporte">
+            <input type="button" value="Pesquisar" id="buscar"><br>
+        </div>
+        <br>
         <table>
             <tr>
                 <th>Nome</th>
@@ -40,7 +39,6 @@
                 <th>Valor</th>
                 <th>CPF/CNPJ/Passaporte</th>
             </tr>
-            <div id="tb-content"></div>
         </table>
     </div>
     <script src="script.js"></script>

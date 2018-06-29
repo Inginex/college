@@ -103,7 +103,10 @@ function Cadastrar(pessoa) {
 }
 
 function Delete(id) {
-    pessoas = pessoas.filter(pessoa => pessoa !== id)
+    console.log("Excluido ID: ", id)
+    pessoas.splice(id, 1);
+    const btID = document.getElementById(id)
+    btID.parentElement.parentElement.remove()
 }
 
 function QueryName(nome) {
@@ -111,6 +114,7 @@ function QueryName(nome) {
         if (pessoa.nome == nome) {
             return pessoa
         }
+        return null
     })
 }
 
@@ -120,6 +124,7 @@ function QueryCPF(cpf) {
             return pessoa
         }
     })
+    return null
 }
 
 function QueryCNPJ(cnpj) {
@@ -128,6 +133,7 @@ function QueryCNPJ(cnpj) {
             return pessoa
         }
     })
+    return null
 }
 
 function QueryPass(passaporte) {
@@ -136,14 +142,15 @@ function QueryPass(passaporte) {
             return pessoa
         }
     })
+    return null
 }
 /* 
  ########## FINAL CLASSE PESSOA ###########
 */
 
-const btnCPF = document.getElementById("btn-cpf");
-const btnCNPJ = document.getElementById("btn-cnpj");
-const btnPass = document.getElementById("btn-pass");
+const btn = document.getElementById("btn");
+const buscar = document.getElementById("buscar");
+const calcular = document.getElementById("calcular");
 
 const nome = document.querySelector("input[name='nome']")
 const telefone = document.querySelector("input[name='telefone']")
@@ -154,9 +161,7 @@ const pass = document.querySelector("input[name='pass']")
 
 const tableContent = document.querySelector("table")
 
-function VerificaCampos() {
-    return true
-}
+let countPessoas = 0;
 
 function cadastraCPF() {
     const pf = new PessoaFisica(nome.value, cpf.value)
@@ -186,37 +191,62 @@ function cadastraPass() {
 }
 
 function atualizaDOM(pessoa) {
-    let dados = "";
-    dados = `<tr>
+    let dados = `<tr class="pessoa">
         <td>${pessoa.getNome()}</td>
         <td>${pessoa.getTelefone()}</td>
-        <td>${pessoa.getValor()}</td>
+        <td class="valor">${pessoa.getValor()}</td>
         <td>${pessoa.getUID()}</td>
+        <td><button id="${countPessoas}" onclick="Delete(${countPessoas})">Excluir</button></td>
         </tr>`;
     tableContent.insertAdjacentHTML("beforeend", dados)
+    countPessoas++;
 }
 
-btnCPF.onclick = function () {
-    if (!VerificaCampos()) {
-        // a verificação falhou
-        console.log("Validação falhou.")
+btn.onclick = function () {
+    if(cpf.value != ""){
+        cadastraCPF()
+        return
     }
-    cadastraCPF()
-}
-
-btnCNPJ.onclick = function () {
-    if (!VerificaCampos()) {
-        // a verificação falhou
-        console.log("Validação falhou.")
+    if(cnpj.value != ""){
+        cadastraCNPJ()
+        return
     }
-    cadastraCNPJ()
-}
-
-btnPass.onclick = function () {
-    if (!VerificaCampos()) {
-        // a verificação falhou
-        console.log("Validação falhou.")
+    if(pass.value != ""){
+        cadastraPass()
+        return
     }
-    cadastraPass()
 }
 
+buscar.onclick = function(){
+    const inpBuscar = document.getElementById("pesquisa").value;
+    const ps = document.querySelectorAll("tr.pessoa");
+    if (inpBuscar == "") {
+        ps.forEach((p) => {
+            p.style.display = "table-row";
+        })
+        return
+    } 
+
+    ps.forEach((p) => {
+        if (p.firstElementChild.textContent === inpBuscar) {
+            p.style.display = "table-row";
+            return
+        }
+        if (p.lastElementChild.textContent === inpBuscar) {
+            p.style.display = "table-row";
+            return
+        }
+        p.style.display = "none";
+    })
+}
+
+calcular.onclick = function() {
+    let tot = 0;
+    const calculo = document.getElementById("calculo");
+    const ps = document.querySelectorAll("tr.pessoa td.valor");
+    ps.forEach((p) => {
+        val = parseInt(p.textContent)
+        tot += val;
+    })
+    calculo.innerText = "Total de vendas: "+tot+"R$";
+}
