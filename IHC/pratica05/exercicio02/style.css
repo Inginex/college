@@ -1,0 +1,27 @@
+html, body {
+    font-size: 1rem;
+    font-family: "Segoe UI", Verdana, Arial;
+    height: 95%;
+}
+main {
+    margin: 2rem auto;
+    width: 32rem;
+    height: 30rem;
+}
+h1 {
+color: red;
+font-size: 2.7rem;
+}
+.numero, .resultado {
+background-color: orange;
+height: 3rem;
+padding: 1rem;
+margin-bottom: 2rem;
+}
+.resultado {
+background-color: green;
+color: white;
+font-weight: bold;
+text-align: center;
+}
+input {text-align: right;}
