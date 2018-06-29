@@ -10,3 +10,14 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
     background-color: #dfe3ee;
 }
+
+#mensagem {
+    padding: 10px;
+    border: 1px solid green;
+    text-align: center;
+    background-color: grey;
+    color: white;
+    font-size: large;
+    max-width: 390px;
+    display: none;
+}
