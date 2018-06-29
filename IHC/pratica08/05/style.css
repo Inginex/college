@@ -31,6 +31,7 @@ header {
 ul li {
     position: relative;
     cursor: pointer;
+    list-style-type: none;
 }
 li span {
     position: absolute;
