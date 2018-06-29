@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css?family=Tajawal:400,700');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Tajawal', sans-serif;
+}
+
+header {
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 4vw;
+    background-color: #39a58c;
+    color: white;
+    position: relative;
+    display: inline-table;
+}
+
+#app ul {
+    line-height: 0;
+    -webkit-column-count: 5;
+    -webkit-column-gap:   0px;
+    -moz-column-count:    5;
+    -moz-column-gap:      0px;
+    column-count:         5;
+    column-gap:           0px; 
+}
+ul li {
+    position: relative;
+    cursor: pointer;
+    list-style: none;
+}
+li span {
+    position: absolute;
+    line-height: 19px;
+    top: 0px;
+    width: 100%;
+    display: none;
+    background: rgba(0, 0, 0, 0.43);
+    color: #fff;
+    padding: 5px;
+    padding: 12px;
+    height: 100%;
+    text-align: center;
+    align-items: center;
+}
+li img {
+    width: 100% !important;
+    height: auto !important;
+}
+
+footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: white;
+    background-color: #2e2e2e;
+}
+
+footer p:nth-child(1) {
+    margin-right: 10px;
+}
+footer p:nth-child(2) {
+    margin-left: 10px;
+}
+footer a {
+    font-weight: bolder;
+    color: #39a58c;
+    text-decoration: none;
+}
+footer div.container {
+    padding: 10px;
+}
+
+
+
+@media (max-width: 1200px) {
+    #app ul {
+    -moz-column-count:    4;
+    -webkit-column-count: 4;
+    column-count:         4;
+    }
+  }
+  @media (max-width: 1000px) {
+    #app ul {
+    -moz-column-count:    3;
+    -webkit-column-count: 3;
+    column-count:         3;
+    }
+  }
+  @media (max-width: 800px) {
+    #app ul {
+    -moz-column-count:    2;
+    -webkit-column-count: 2;
+    column-count:         2;
+    }
+  }
+  @media (max-width: 400px) {
+    #app ul {
+    -moz-column-count:    1;
+    -webkit-column-count: 1;
+    column-count:         1;
+    }
+  }
