@@ -195,7 +195,7 @@ function atualizaDOM(pessoa) {
         <td>${pessoa.getNome()}</td>
         <td>${pessoa.getTelefone()}</td>
         <td class="valor">${pessoa.getValor()}</td>
-        <td>${pessoa.getUID()}</td>
+        <td class="uid">${pessoa.getUID()}</td>
         <td><button id="${countPessoas}" onclick="Delete(${countPessoas})">Excluir</button></td>
         </tr>`;
     tableContent.insertAdjacentHTML("beforeend", dados)
@@ -228,12 +228,15 @@ buscar.onclick = function(){
     } 
 
     ps.forEach((p) => {
+        // SELECIONA NOME
         if (p.firstElementChild.textContent === inpBuscar) {
             p.style.display = "table-row";
             return
         }
-        if (p.lastElementChild.textContent === inpBuscar) {
-            p.style.display = "table-row";
+        // SELECIONA IDENTIFICADOR
+        const uid = p.getElementsByClassName("uid")[0];
+        if (uid.textContent === inpBuscar){
+            uid.style.display = "table-row";
             return
         }
         p.style.display = "none";
