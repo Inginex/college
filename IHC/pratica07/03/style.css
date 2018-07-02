@@ -5,3 +5,7 @@
     text-align: center;
     width: 250px;
 }
+
+#form-curso {
+    display: none;
+}

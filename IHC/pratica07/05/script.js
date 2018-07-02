@@ -26,8 +26,8 @@ function addToDB(obj) {
 
     if (dbl >= database.length) {
         // Obj was not pushed
-        return "addToDB Error: Object was not pushed";
         console.log(database.length);
+        return "addToDB Error: Object was not pushed";
     }
 
     updateDOM(obj);

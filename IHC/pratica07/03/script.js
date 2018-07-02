@@ -80,7 +80,7 @@ forms.forEach((form) => {
             // Set data
             aluno.curso.nome = nome;
             aluno.curso.campus = campus;
-            aluno.curso.matricula = matricula;
+            aluno.curso.turno = turno;
             console.log(aluno.curso);
 
             // Show data
