@@ -20,7 +20,7 @@ form.addEventListener('submit', function(e) {
 
 function makeCalc(){
     // (4 * 3,14 * n^3) / 3
-    if (matrizTemp){
+    if (matrizTemp.length !== 0){
         let num = matrizTemp[0];
 
         result = (4 * 3.14 * Math.pow(num, 3)) / 3;

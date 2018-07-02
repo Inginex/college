@@ -21,7 +21,7 @@ form.addEventListener('submit', function(e) {
 
 function getAverage(){
     let calc;
-    if (matrizTemp){
+    if (matrizTemp.length !== 0){
         [md1, md2, md3] = matrizTemp
         calc = (md1 + md2 + md3) / matrizTemp.length;
         result = `Average => ${calc}`;

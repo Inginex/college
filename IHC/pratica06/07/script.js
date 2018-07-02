@@ -26,7 +26,6 @@ function makeCalc(){
 
 function createMatriz(){
     let matrizTemp = [];
-    let count = 0;
     
     matrizTemp = keyword.split(/(?:,| )+/).map(Number);
     if (matrizTemp.length == 4){

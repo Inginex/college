@@ -22,7 +22,7 @@ form.addEventListener('submit', function(e) {
 function convertTemp(){
     // C = (5 / 9) * ( F – 32).
     let calc;
-    if (matrizTemp){
+    if (matrizTemp.length !== 0){
         let num = matrizTemp[0];
         calc = (5 / 9) * (num - 32);
         result = `Converted to Celcius => ${Math.floor(calc)}ºC`;

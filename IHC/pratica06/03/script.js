@@ -4,30 +4,26 @@ const showResult = document.querySelector('#result');
 
 let htmlContent;
 let keyword;
-let count = [];
+let nums = [];
 let calc = 0;
 
 form.addEventListener('submit', function(e) {  
     e.preventDefault();
-    count = [];
+    nums = [];
     showResult.innerHTML = '';
     keyword = inputKeyword.value;
     
-    count = keyword.split(/(?:,| )+/);  
+    nums = keyword.split(/(?:,| )+/);  
     makeCalc();
 });
 
 function makeCalc() {
-    count.map(Number);
-    count.forEach(function(n){ if(n <= 0){ 
-        calc = "Invalido";
+    nums.map(Number);
+    nums.forEach(function(n){ if(n <= 0 || n === 0){ 
+        alert("Numero Invalido")
         return;
     }});
 
-    if(calc != 0) {
-        showResult.insertAdjacentHTML('afterbegin', "Número Inválido.");
-        return;
-    }
-    calc = Math.round( Math.log(count[0])/Math.log(count[1]));
+    calc = Math.round(Math.log(nums[0])/Math.log(nums[1]));
     showResult.insertAdjacentHTML('afterbegin', calc);
 }
