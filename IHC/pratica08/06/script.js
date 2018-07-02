@@ -34,12 +34,14 @@ let selected = new Array();
     })
 })();
 
+// Call raffle button
 function callRaffle() {
     call.style.display = "flex";
     btn.addEventListener("click", () => {
         shuffle();
     })
 }
+// Shuffle COM numbers
 function shuffle() {
     if(needToReset){return;}
     const pick = new Array();
@@ -51,13 +53,16 @@ function shuffle() {
     // Check if users won
     checkWinner(pick);
 }
+// Pick a random number
 function pickNumber(pick) {
     const picked = randomIntFromInterval(1, 100);
     return pick.includes(picked) ? pickNumber(pick) : picked;
 }
+// Return a random number
 function randomIntFromInterval(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
+// Check amount of hit numbers
 function checkWinner(pick) {
     let matchs = "";
     let count = 0;
@@ -79,6 +84,7 @@ function checkWinner(pick) {
     }
     showResult(matchs, pick);
 }
+// Call result interface
 function showResult(matchs, pick) {
     res.style.display = "flex";
     res.insertAdjacentHTML("afterbegin", `<h1>Você ganhou ${matchs} da premiação.</h1><h3>Resultado:</h3><p>Seus numeros: ${selected}</p><p>Numeros Sorteados: ${pick}</p>`);
@@ -89,7 +95,7 @@ function showResult(matchs, pick) {
     })
     needToReset = true;
 }
-
+// Reset game numbers and interfaces
 function resetGame(){
     selected = [];
     const lis = document.querySelectorAll("li");
