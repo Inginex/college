@@ -1,3 +1,4 @@
+/* CRIAÇÃO DAS CLASSES */
 class Pessoa {
     constructor(nome) {
         this.nome = nome;
@@ -97,52 +98,18 @@ class PessoaEstrangeira extends Pessoa {
 
 let pessoas = [];
 
+// CADASTRA PESSOAS
 function Cadastrar(pessoa) {
     pessoas.push(pessoa)
     return true
 }
 
+// DELETA PESSOAS
 function Delete(id) {
     console.log("Excluido ID: ", id)
     pessoas.splice(id, 1);
     const btID = document.getElementById(id)
     btID.parentElement.parentElement.remove()
-}
-
-function QueryName(nome) {
-    pessoas.forEach((pessoa) => {
-        if (pessoa.nome == nome) {
-            return pessoa
-        }
-        return null
-    })
-}
-
-function QueryCPF(cpf) {
-    pessoas.forEach((pessoa) => {
-        if (pessoa.cpf == cpf) {
-            return pessoa
-        }
-    })
-    return null
-}
-
-function QueryCNPJ(cnpj) {
-    pessoas.forEach((pessoa) => {
-        if (pessoa.cnpj == cnpj) {
-            return pessoa
-        }
-    })
-    return null
-}
-
-function QueryPass(passaporte) {
-    pessoas.forEach((pessoa) => {
-        if (pessoa.passaporte == passaporte) {
-            return pessoa
-        }
-    })
-    return null
 }
 /* 
  ########## FINAL CLASSE PESSOA ###########
@@ -161,6 +128,7 @@ const pass = document.querySelector("input[name='pass']")
 
 const tableContent = document.querySelector("table")
 
+// Quantidade de pessoas cadastras
 let countPessoas = 0;
 
 function cadastraCPF() {
@@ -190,6 +158,7 @@ function cadastraPass() {
     console.log("DB Updated: \n", pessoas)
 }
 
+// INSERE PESSOA NO DOM
 function atualizaDOM(pessoa) {
     let dados = `<tr class="pessoa">
         <td>${pessoa.getNome()}</td>
@@ -202,6 +171,7 @@ function atualizaDOM(pessoa) {
     countPessoas++;
 }
 
+// FUNÇÃO DE CADASTRO
 btn.onclick = function () {
     if(cpf.value != ""){
         cadastraCPF()
@@ -217,6 +187,7 @@ btn.onclick = function () {
     }
 }
 
+// FUNÇÃO DE BUSCA
 buscar.onclick = function(){
     const inpBuscar = document.getElementById("pesquisa").value;
     const ps = document.querySelectorAll("tr.pessoa");
@@ -243,6 +214,7 @@ buscar.onclick = function(){
     })
 }
 
+// FUNÇÃO PARA CALCULAR VALORES
 calcular.onclick = function() {
     let tot = 0;
     const calculo = document.getElementById("calculo");
