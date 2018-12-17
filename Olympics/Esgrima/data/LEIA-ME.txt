@@ -1,0 +1,5 @@
+1- ABRA O PHPMYADMIN - http://localhost/phpmyadmin/
+2- CLIQUE EM SQL.
+3- COPIE E COLE O CODIGO DO ARQUIVO db_init.sql DENTRO DA AREA DE TEXTO.
+5- CLIQUE NO BOTAO EXECUTAR.
+6- INICIE O SITE E CRIE A SUA CONTA. - http://localhost/esgrima/
